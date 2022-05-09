@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: MyString
+  category: MyString
+  city: MyString
+  state: MyString
+  description: MyString
+  price: 1.5
+  user: one
+
+two:
+  image: MyString
+  category: MyString
+  city: MyString
+  state: MyString
+  description: MyString
+  price: 1.5
+  user: two
