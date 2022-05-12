@@ -5,15 +5,19 @@ one:
   category: MyString
   city: MyString
   state: MyString
+  price: MyString
   description: MyString
-  price: 1.5
-  user: one
+  sold: false
+  seller: one
+  buyer: one
 
 two:
   image: MyString
   category: MyString
   city: MyString
   state: MyString
+  price: MyString
   description: MyString
-  price: 1.5
-  user: two
+  sold: false
+  seller: two
+  buyer: two
