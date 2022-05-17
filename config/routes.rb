@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :comments
   resources :rooms
+  # resources :rooms, only: [:comments, :index, :show, :create, :patch, :destroy]
   resources :users
 
   get "`/rooms/:room_id/comments`", to: 'comments#index'
+  post '/signup', to: 'users#create'
+  get '/me', to: 'users#me' 
 
   # post "/posts", to: 'posts#create'
   # get "/posts", to: "posts#index"

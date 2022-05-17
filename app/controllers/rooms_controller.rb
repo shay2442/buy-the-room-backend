@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    
     def index
         rooms = Room.where(sold: false)
         render json: rooms
@@ -11,7 +12,6 @@ class RoomsController < ApplicationController
 
 
     def create
-        byebug
         room = current_user.sold_rooms.create(room_params)
 
         if room.valid?
@@ -22,9 +22,33 @@ class RoomsController < ApplicationController
         
     end
 
+    def update 
+        # @room.update!(room_params)
+        room = Room.find(params[:id])
+        if room.valid?
+            render json: Room.update(room_params)
+        else 
+            render json:"Room was not updated"
+        end
+    end
+
+     def destroy 
+        # byebug
+        room = Room.find(params[:id])
+        render json: room.destroy 
+        head :no_content
+    end
+
+    
+
     private
 
     def room_params
-        params.permit(:id, :image, :category, :city, :state, :description, :price, :items, :sold)
+        params.permit(:image, :category, :city, :state, :description, :price, :items, :sold)
     end
+
+    def find_room
+        @room = Room.find(params[:id])
+    end
+    
 end
