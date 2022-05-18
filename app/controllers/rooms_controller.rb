@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+    # skip_before_action :index, :show
     
     def index
         rooms = Room.where(sold: false)
@@ -8,6 +9,23 @@ class RoomsController < ApplicationController
     def show
         room = Room.find(params[:id])
         render json: room
+    end
+
+    def sold 
+        room = Room.find(params[:id])
+        if room
+            room.update(sold: true, buyer: current_user)
+            render json: room, status: :ok
+        else
+            render json: {error: "Room not found"}, status: :unprocessable_entity
+        end
+    end
+
+    def purchased_rooms
+        # purchased_items = Room.find(params[:id])
+        # render json: purchased_items, status: :ok
+
+        render json: current_user.purchased_items, status: :ok
     end
 
 

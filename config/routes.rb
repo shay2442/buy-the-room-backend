@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#me' 
 
+  patch "/rooms/:id/sold", to: "rooms#sold"
+  get '/purchased_rooms', to: "rooms#purchased_rooms"
+
   # post "/posts", to: 'posts#create'
   # get "/posts", to: "posts#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
