@@ -2,8 +2,8 @@ class RoomsController < ApplicationController
     # skip_before_action :index, :show
     
     def index
-        rooms = Room.where(sold: false)
-        render json: rooms
+        room = Room.where(sold: false)
+        render json: room, status: :ok
     end
 
     def show
@@ -22,10 +22,10 @@ class RoomsController < ApplicationController
     end
 
     def purchased_rooms
-        # purchased_items = Room.find(params[:id])
-        # render json: purchased_items, status: :ok
+        purchased_items = Room.find(params[:id])
+        render json: purchased_items, status: :ok
 
-        render json: current_user.purchased_items, status: :ok
+        # render json: current_user.purchased_items, status: :ok
     end
 
 
@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
         if room.valid?
             render json: room, status: :created
         else
-            render json:item.errors.full_messages, status: :unprocessable_entity
+            render json:room.errors.full_messages, status: :unprocessable_entity
         end
         
     end

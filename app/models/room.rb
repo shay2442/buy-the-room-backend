@@ -4,6 +4,6 @@ class Room < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   validates :category, presence: true
-  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/, message: "Must be dollar amount" }, numericality: { greater_than: 0, less_than: 10000 }
+  validates :price, presence: true, format: { with: /\A\d+(?:\.\d{0,2})?\z/, message: "Must be dollar amount" }, numericality: { greater_than: 0, less_than: 5000000 }
 
 end

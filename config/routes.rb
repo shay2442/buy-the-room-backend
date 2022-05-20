@@ -5,11 +5,14 @@ Rails.application.routes.draw do
   resources :users
 
   get "`/rooms/:room_id/comments`", to: 'comments#index'
+  post "/login", to: "sessions#login"
   post '/signup', to: 'users#create'
-  get '/me', to: 'users#me' 
+  # get '/me', to: 'users#me' 
 
   patch "/rooms/:id/sold", to: "rooms#sold"
   get '/purchased_rooms', to: "rooms#purchased_rooms"
+
+
 
   # post "/posts", to: 'posts#create'
   # get "/posts", to: "posts#index"
