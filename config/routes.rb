@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show' 
 
+  get '/auth', to: 'sessions#auth'
+  delete '/logout', to: 'sessions#logout'
 
   patch "/rooms/:id/sold", to: "rooms#sold"
   get '/purchased_rooms', to: "rooms#purchased_rooms"
