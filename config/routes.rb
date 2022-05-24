@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get "`/rooms/:room_id/comments`", to: 'comments#index'
   post "/login", to: "sessions#login"
   post '/signup', to: 'users#create'
-  # get '/me', to: 'users#me' 
+  get '/me', to: 'users#show' 
+
 
   patch "/rooms/:id/sold", to: "rooms#sold"
   get '/purchased_rooms', to: "rooms#purchased_rooms"
