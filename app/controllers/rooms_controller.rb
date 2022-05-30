@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-    # skip_before_action :index, :show
+    skip_before_action :authorized, only: [:index, :show]
     
     def index
         room = Room.where(sold: false)
