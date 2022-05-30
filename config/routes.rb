@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show' 
 
+  get "/get-current-user" => "sessions#get_current_user"
+
   get '/auth', to: 'sessions#auth'
   delete '/logout', to: 'sessions#logout'
 

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     # skip_before_action :authenticate_user, only: [:create, :me]
+    skip_before_action :authorized, only: [:index, :create] 
     def index 
         render json: User.all
     end
@@ -13,11 +14,22 @@ class UsersController < ApplicationController
     #     end
     # end
 
-    def create 
-        user = User.create!(user_params)
-        session[:user_id] = user.id
-        render json: user, status: :created
-    end
+  
+
+    def create
+
+        @user = User.create!(user_params) 
+       
+        if @user.valid? && @user.id
+          @token = encode_token({ user_id: @user.id })
+          render json: {user: @user, token: @token}, status: :created 
+        else
+        
+          render json: @user.errors, status: :unprocessable_entity
+        end
+      end
+    
+
 
     def show
         if current_user 
