@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+skip_before_action :authorized, only: [:index, :create]
     def index
         comments = Comment.all
         render json: comments
@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     def create
         comment = current_user.comments.create(comment_params)
+        
 
         if comment.valid?
             render json: comment, status: :created
