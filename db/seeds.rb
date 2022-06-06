@@ -1,5 +1,6 @@
 Room.destroy_all
 User.destroy_all
+Image.destroy_all
 
 puts "Seeding"
 shay = User.create(username:"Shay", email:"shay@rooms.com", password:"test")
@@ -15,3 +16,9 @@ room3 = Room.create(seller_id: User.last.id, image:"https://i.pinimg.com/origina
 comment1 = Comment.create(content:"This room is exactly what I am looking for!", room: room1, user: bailey)
 
 puts"Done Seeding!"
+
+images = ["https://havertys.scene7.com/is/image/Havertys/0-8500-1024?op_sharpen=1&wid=240&hei=160", "https://secure.img1-fg.wfcdn.com/im/35172508/resize-h445%5Ecompr-r85/1810/181037512/Sylas+20.5%2527%2527+Tall+Solid+Wood+Tree+Stump+End+Table.jpg", "https://secure.img1-fg.wfcdn.com/im/05429430/resize-h445%5Ecompr-r85/1388/138877433/Bayswater+84.5%2527%2527+Rolled+Arm+Sofa.jpg", "https://www.livingspaces.com/globalassets/productassets/200000-299999/260000-269999/269000-269999/269200-269299/269247/269247_white_multi-media_accent_chair_signature_01.jpg?w=1911&h=1288&mode=pad", "https://secure.img1-fg.wfcdn.com/im/49142970/resize-h800-w800%5Ecompr-r85/7807/78074786/Easthampton+Solid+Wood+Coffee+Table+with+Storage.jpg"]
+
+images.each do |image| 
+    Image.create(url: image, room_id: room1.id)
+end

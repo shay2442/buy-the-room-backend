@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   resources :comments
   resources :rooms
   # resources :rooms, only: [:comments, :index, :show, :create, :patch, :destroy]
