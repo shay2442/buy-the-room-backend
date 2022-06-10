@@ -5,9 +5,9 @@ class RoomSerializer < ActiveModel::Serializer
   has_many :comments
   has_many :images
 
-  def price 
-    "$#{'%.2f' % self.object.price}" 
-  end
+  # def price 
+  #   "$#{'%.2f' % self.object.price}" 
+  # end
 
 
   def status 

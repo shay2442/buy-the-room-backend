@@ -42,13 +42,22 @@ class RoomsController < ApplicationController
 
     def update 
         # @room.update!(room_params)
-        room = Room.find(params[:id])
-        if room.valid?
-            render json: Room.update(room_params)
-        else 
+        room = Room.find_by(id: params[:id])
+        # byebug
+        if room && room.update(room_params)
+            # byebug
+            render json: room
+        else
             render json:"Room was not updated"
         end
     end
+    # def update
+    #     if @room.update(room_params)
+    #       render json: @room
+    #     else
+    #       render json: @room.errors, status: :unprocessable_entity
+    #     end
+    #   end
 
      def destroy 
         # byebug
@@ -62,7 +71,7 @@ class RoomsController < ApplicationController
     private
 
     def room_params
-        params.permit(:image, :category, :city, :state, :description, :price, :items, :sold)
+        params.permit(:id, :image, :category, :city, :state, :description, :price, :items, :sold)
     end
 
     def find_room
