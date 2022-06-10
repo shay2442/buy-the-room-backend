@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_06_224742) do
     t.bigint "buyer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.jsonb "items"
+    t.text "items"
     t.index ["buyer_id"], name: "index_rooms_on_buyer_id"
     t.index ["seller_id"], name: "index_rooms_on_seller_id"
   end

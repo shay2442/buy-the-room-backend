@@ -30,9 +30,12 @@ class RoomsController < ApplicationController
 
 
     def create
-        room = current_user.sold_rooms.create(room_params)
+        room = current_user.sold_rooms.create(room_params.except("images"))
 
         if room.valid?
+            room_params["images"].each do |image|
+                Image.create(url: image, room_id: room.id)
+            end
             render json: room, status: :created
         else
             render json:room.errors.full_messages, status: :unprocessable_entity
@@ -71,7 +74,7 @@ class RoomsController < ApplicationController
     private
 
     def room_params
-        params.permit(:id, :image, :category, :city, :state, :description, :price, :items, :sold)
+        params.permit(:id, :image, :category, :city, :state, :description, :price, :items, :sold, images: [])
     end
 
     def find_room
