@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cart_rooms
   resources :images
   resources :comments
   resources :rooms
