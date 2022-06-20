@@ -27,6 +27,8 @@ gem "jwt"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'irb'
 
+
+gem 'email_validator' 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
