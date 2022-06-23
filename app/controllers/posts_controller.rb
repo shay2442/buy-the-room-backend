@@ -11,4 +11,3 @@ class PostsController < ApplicationController
         params.permit(:title, :body, :featured_image)
     end
 end
-end
