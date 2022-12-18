@@ -45,7 +45,7 @@ class RoomsController < ApplicationController
 
     def update 
         # @room.update!(room_params)
-        room = Room.find_by(id: params[:id])
+        room = current_user.sold_rooms.find_by(id: params[:id])
         # byebug
         if room && room.update(room_params)
             # byebug
@@ -63,7 +63,6 @@ class RoomsController < ApplicationController
     #   end
 
      def destroy 
-        # byebug
         room = Room.find(params[:id])
         render json: room.destroy 
         head :no_content
